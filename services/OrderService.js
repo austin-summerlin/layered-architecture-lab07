@@ -1,4 +1,4 @@
-import sendSms from '../lib/utils/twilio.js';
+import { sendSms } from '../lib/utils/twilio.js';
 import Order from '../lib/models/Order.js';
 
 export default class OrderService {
@@ -12,3 +12,4 @@ export default class OrderService {
     return order;
   }
 }
+
