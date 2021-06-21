@@ -21,5 +21,17 @@ export default class OrderService {
     );
     return order;
   }
+
+  static async delete(id) {
+    const order = await Order.delete(id);
+
+    await sendSms(
+      process.env.ORDER_HANDLER_NUMBER,
+      `Order #${id} has been deleted`
+    );
+    return order;
+  }
+
+
 }
 

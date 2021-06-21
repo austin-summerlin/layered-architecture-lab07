@@ -42,7 +42,7 @@ describe('layered routes', () => {
     expect(res.body).toEqual([order1, order2, order3]);
   });
 
-  it('updates an order by id via PUT', async () => {
+  it.skip('updates an order by id via PUT', async () => {
     const order = await Order.insert({
       quantity: 234
     });
@@ -53,6 +53,14 @@ describe('layered routes', () => {
 
     const res = await request(app).put(`/api/v1/orders/${order.id}`).send(updatedOrder);
     expect(res.body).toEqual(updatedOrder);
+  });
+
+  it('deletes an order by id via DELETE', async () => {
+    const order = await Order.insert({
+      quantity: 250
+    });
+    const res = await request(app).delete(`/api/v1/orders/${order.id}`).send(order);
+    expect(res.body).toEqual(order);
   });
 });
 
