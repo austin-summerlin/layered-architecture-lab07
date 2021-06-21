@@ -9,7 +9,7 @@ describe('layered routes', () => {
     return setup(pool);
   });
 
-  it.skip('creates a new order and sends a text message', async () => {
+  it('creates a new order and sends a text message', async () => {
     const res = await request(app)
       .post('/api/v1/orders')
       .send({ quantity: 5 });
@@ -42,7 +42,7 @@ describe('layered routes', () => {
     expect(res.body).toEqual([order1, order2, order3]);
   });
 
-  it.skip('updates an order by id via PUT', async () => {
+  it('updates an order by id via PUT', async () => {
     const order = await Order.insert({
       quantity: 234
     });
