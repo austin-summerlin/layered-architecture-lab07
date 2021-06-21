@@ -1,4 +1,6 @@
 name: Jest Tests
+- name: Twilio SMS
+  uses: twilio-labs/actions-sms@v1
 
 on: [push]
 jobs:
