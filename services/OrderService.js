@@ -11,5 +11,15 @@ export default class OrderService {
     );
     return order;
   }
+
+  static async update({ quantity, id }) {
+    const order = await Order.update({ quantity, id });
+
+    await sendSms(
+      process.env.ORDER_HANDLER_NUMBER,
+      `Order has been updated to ${quantity}`
+    );
+    return order;
+  }
 }
 

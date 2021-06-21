@@ -41,5 +41,18 @@ describe('layered routes', () => {
     const res = await request(app).get('/api/v1/orders');
     expect(res.body).toEqual([order1, order2, order3]);
   });
+
+  it('updates an order by id via PUT', async () => {
+    const order = await Order.insert({
+      quantity: 234
+    });
+    const updatedOrder = ({
+      id: '1',
+      quantity: 230
+    });
+
+    const res = await request(app).put(`/api/v1/orders/${order.id}`).send(updatedOrder);
+    expect(res.body).toEqual(updatedOrder);
+  });
 });
 
